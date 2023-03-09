@@ -1,0 +1,63 @@
+// criando para armazenar os dados de altura e sexo
+
+let pessoas = [];
+
+
+
+// loop para obter os dados de 15 pessoas
+
+for (let i = 1; i <= 15; i++) {
+
+  // obtendo a altura e o sexo da pessoa
+
+  let altura = parseFloat(prompt(`Informe a altura da ${i}ª pessoa:`));
+
+  let sexo = prompt(`Informe o sexo da ${i}ª pessoa (M/F):`);
+
+
+
+  // adicionando os dados da pessoa no array de pessoas
+
+  pessoas.push({ altura: altura, sexo: sexo });
+
+}
+
+
+
+// encontrando a maior e a menor altura do grupo
+
+let alturas = pessoas.map((p) => p.altura);
+
+let maiorAltura = Math.max(...alturas);
+
+let menorAltura = Math.min(...alturas);
+
+
+
+// encontrando a média de altura dos homens
+
+let alturasHomem = pessoas
+
+  .filter((p) => p.sexo === "M")
+
+  .map((p) => p.altura);
+
+let mediaAlturaHomem = alturasHomem.reduce((a, b) => a + b, 0) / alturasHomem.length;
+
+
+
+// encontrando o número de mulheres
+
+let mulheres = pessoas.filter((p) => p.sexo === "F");
+
+let numMulheres = mulheres.length;
+
+
+
+// imprimindo os resultados
+
+console.log(`A maior altura do grupo é ${maiorAltura}m e a menor é ${menorAltura}m.`);
+
+console.log(`A média de altura dos homens é ${mediaAlturaHomem.toFixed(2)}m.`);
+
+console.log(`O número de mulheres é ${numMulheres}.`);
